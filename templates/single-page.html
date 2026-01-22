@@ -4,6 +4,6 @@
 <div class="container">
     <img height="400px" src="{{news.image.url}}" alt="">
     <h1>{{news.title}}</h1>
-    <p>{{news.description}}</p>
+    <p>{{news.description|safe}}</p>
 </div>
 {% endblock content %}

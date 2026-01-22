@@ -11,7 +11,7 @@
                     <img src="{{news.image.url}}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">{{news.title}}</h5>
-                        <p class="card-text">{{news.description|truncatewords:15}}</p>
+                        <p class="card-text">{{news.description|truncatewords:15|safe}}</p>
                         <a href="{% url 'news_detail' news.slug %}" class="btn btn-primary">Читать дальше</a>
                     </div>
                 </div> 
