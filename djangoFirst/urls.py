@@ -2,12 +2,13 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from news.views import homepage, news_detail, about
+from news.views import homepage, news_detail, about, search
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("ckeditor5/", include('django_ckeditor_5.urls')),
     path('', homepage, name='homepage'),
     path('about/', about, name='about'),
+    path('search/', search, name='search'),
     path('news/<slug:slug>/', news_detail, name='news_detail'),
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

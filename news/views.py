@@ -4,12 +4,25 @@ from django.db.models import Q
 
 
 def search(request):
-    pass
+    category_all = Category.objects.filter(news__isnull=False).distinct()
+    query = request.GET.get('q', '')
+    results = []
 
+    if query:
+        results = News.objects.filter(
+            Q(title__icontains=query) |
+            Q(description__icontains=query)
+        )
+    context = {
+        'category_all':category_all,
+        'results':results,
+        'query':query
+    }
+    return render(request, 'search.html', context)
 
 def homepage(request):
     news_all = News.objects.all()
-    category_all = Category.objects.all()
+    category_all = Category.objects.filter(news__isnull=False).distinct()
     context = {
         'news_all':news_all,
         'category_all':category_all,
@@ -18,7 +31,7 @@ def homepage(request):
 
 
 def about(request):
-    category_all = Category.objects.all()
+    category_all = Category.objects.filter(news__isnull=False).distinct()
     about = AboutPage.objects.latest('-id')
     context = { 
         'category_all':category_all,
@@ -29,7 +42,7 @@ def about(request):
 
 def news_detail(request, slug):
     news = get_object_or_404(News, slug=slug)
-    category_all = Category.objects.all()
+    category_all = Category.objects.filter(news__isnull=False).distinct()
     context = {
         'news':news,
         'category_all':category_all,
