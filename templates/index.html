@@ -2,16 +2,19 @@
     
 {% block content %}
 <h2 class="text-center">ПКС-2-24</h2>
-<div class="conatiner mt-5">
+<div class="container mt-5">
     <div class="row">
         <!-- col -->
         {% for news in news_all %}
             <div class="col-lg-4">
-                <div class="card" style="width: 18rem;">
-                    <img src="{{news.image.url}}" class="card-img-top" alt="...">
+                <div class="card">
+                    <div class="imgBlock" style="height: 200px;">
+                        <img style="height: 100%; object-fit: cover;" src="{{news.image.url}}" class="card-img-top" alt="...">
+                    </div>
                     <div class="card-body">
                         <h5 class="card-title">{{news.title}}</h5>
-                        <p class="card-text">{{news.description|truncatewords:15|safe}}</p>
+                        <p>{{news.category}}</p>
+                        <p class="card-text">{{news.description|truncatewords:12|safe}}</p>
                         <a href="{% url 'news_detail' news.slug %}" class="btn btn-primary">Читать дальше</a>
                     </div>
                 </div> 

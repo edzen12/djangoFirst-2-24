@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+    
+{% block content %}
+<h2 class="text-center">{{about.title}}</h2>
+<div class="container">
+    <p>{{about.desc|safe}}</p>
+</div>
+
+{% endblock content %}
+    

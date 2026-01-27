@@ -3,6 +3,7 @@
 {% block content %}
 <div class="container">
     <img height="400px" src="{{news.image.url}}" alt="">
+    <p>Категория: {{news.category}}</p>
     <h1>{{news.title}}</h1>
     <p>{{news.description|safe}}</p>
 </div>
