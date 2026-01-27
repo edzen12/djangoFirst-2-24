@@ -39,3 +39,17 @@ class AboutPage(models.Model):
     
     class Meta:
         verbose_name_plural = 'О нас'
+
+
+class Comment(models.Model):
+    news=models.ForeignKey(News, models.CASCADE)
+    name = models.CharField(verbose_name="ФИО", max_length=100)
+    text = models.TextField(verbose_name="Комментарии")
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name 
+    
+    class Meta:
+        verbose_name_plural = 'Комментарии'
+        verbose_name = 'коммент'
