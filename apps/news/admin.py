@@ -1,10 +1,8 @@
 from django.contrib import admin
-from news.models import News, Category, AboutPage
+from apps.news.models import News, Category
 
 
-@admin.register(AboutPage)
-class AboutPageAdmin(admin.ModelAdmin):
-    list_display = ['title'] 
+
 
 
 @admin.register(Category)

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+    
+{% block content %}
+<h2 class="text-center">Сотрудники</h2>
+<div class="container mt-5">
+    <div class="row">
+        <!-- col -->
+        {% for emp in employee %}
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="imgBlock" style="height: 200px;"> 
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{emp.fullname}}</h5>
+                        <p>{{emp.position}} - {{emp.exp}}</p> 
+                        {% if emp.sociallink_set.all %}
+                            {% for social in emp.sociallink_set.all %}
+                                <a target="_blank" href="{{social.link}}" class="btn btn-primary">{{social.title}}</a>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div> 
+            </div>
+        {% endfor %}
+        <!-- col -->
+    </div>
+</div>
+{% endblock content %}
+    

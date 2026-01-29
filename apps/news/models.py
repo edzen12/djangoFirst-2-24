@@ -28,17 +28,6 @@ class News(models.Model):
     
     class Meta:
         verbose_name_plural = 'Новости'
-    
-
-class AboutPage(models.Model):
-    title = models.CharField(max_length=100, verbose_name="Страница")
-    desc = CKEditor5Field('Описание о нас', config_name='extends')
-
-    def __str__(self):
-        return self.title
-    
-    class Meta:
-        verbose_name_plural = 'О нас'
 
 
 class Comment(models.Model):
