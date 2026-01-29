@@ -25,7 +25,7 @@
                 </li> 
                 {% for category in category_all %}
                 <li class="nav-item">
-                <a class="nav-link" href="#">{{category.title}}</a>
+                <a class="nav-link" href="{% url "category_detail" category.slug %}">{{category.title}}</a>
                 </li> 
                 {% endfor %}
             </ul>

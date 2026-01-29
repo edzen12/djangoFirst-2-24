@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+    
+{% block content %}
+<h2 class="text-center">{{category}}</h2>
+<div class="container mt-5">
+    <div class="row">
+        <!-- col -->
+        {% for news in news_all_category %}
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="imgBlock" style="height: 200px;">
+                        <img style="height: 100%; object-fit: cover;" src="{{news.image.url}}" class="card-img-top" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{news.title}}</h5>
+                        <p>{{news.category}}</p>
+                        <p class="card-text">{{news.description|truncatewords:12|safe}}</p>
+                        <a href="{% url 'news_detail' news.slug %}" class="btn btn-primary">Читать дальше</a>
+                    </div>
+                </div> 
+            </div>
+        {% endfor %}
+        <!-- col -->
+    </div>
+</div>
+{% endblock content %}
+    

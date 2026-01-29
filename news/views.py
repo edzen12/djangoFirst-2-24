@@ -48,3 +48,15 @@ def news_detail(request, slug):
         'category_all':category_all,
     }
     return render(request, 'single-page.html',context)
+
+
+def category_detail(request, slug):
+    category = get_object_or_404(Category, slug=slug)
+    category_all = Category.objects.filter(news__isnull=False).distinct()
+    news_all_category = News.objects.filter(category=category)
+    context = {
+        'category_all':category_all,
+        'category':category,
+        'news_all_category':news_all_category,
+    }
+    return render(request, 'category.html', context)
