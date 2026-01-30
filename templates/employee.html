@@ -8,10 +8,16 @@
         {% for emp in employee %}
             <div class="col-lg-4">
                 <div class="card">
+                    <a href="">
                     <div class="imgBlock" style="height: 200px;"> 
+                        {% if emp.image %}
+                            <img style="height: 100%; object-fit: cover;"  class="img-thumbnail" src="{{emp.image.url}}" alt="">
+                        {% else %}
+                            <img style="height: 100%; object-fit: cover;" class="img-thumbnail" src="https://i.pinimg.com/564x/4f/9b/61/4f9b611e72d038a4e8176709de0913d4.jpg" alt="">
+                        {% endif %}
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">{{emp.fullname}}</h5>
+                        <h5 class="card-title"><a href="{% url 'employee_detail' emp.slug  %}">{{emp.fullname}}</a></h5>
                         <p>{{emp.position}} - {{emp.exp}}</p> 
                         {% if emp.sociallink_set.all %}
                             {% for social in emp.sociallink_set.all %}

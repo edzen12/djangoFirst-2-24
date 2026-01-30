@@ -15,8 +15,14 @@ class AboutPage(models.Model):
 
 class Employee(models.Model):
     fullname = models.CharField(max_length=120, verbose_name="ФИО")
+    image = models.ImageField(
+        upload_to='employee/', verbose_name="Фото", 
+        null=True
+    )
     position = models.CharField(max_length=100, verbose_name="Должность")
     exp = models.CharField(max_length=20, verbose_name="Опыт")
+    biography = CKEditor5Field('Биография', config_name='extends', null=True)
+    slug = models.SlugField(unique=True, null=True)
 
     def __str__(self):
         return self.fullname

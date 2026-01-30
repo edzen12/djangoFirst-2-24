@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from apps.news.models import Category
 from apps.about.models import AboutPage, Employee
 
@@ -21,3 +21,13 @@ def employee(request):
         'employee':employee,
     }
     return render(request, 'employee.html', context)
+
+
+def employee_detail(request, slug):
+    employee = get_object_or_404(Employee, slug=slug)
+    category_all = Category.objects.filter(news__isnull=False).distinct()
+    context = {
+        'employee':employee,
+        'category_all':category_all,
+    }
+    return render(request, 'single-employee.html',context)

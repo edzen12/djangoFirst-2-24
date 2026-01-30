@@ -15,5 +15,6 @@ class EmployeeInline(admin.TabularInline):
 class EmployeeAdmin(admin.ModelAdmin):
     list_display = ['fullname', 'position']
     inlines = [EmployeeInline]
+    prepopulated_fields = {'slug':['fullname']}
 
  

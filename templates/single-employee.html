@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-3">
+    <div class="row">
+        <!-- col -->
+        <div class="col-lg-8">
+            <img height="400px" src="{{employee.image.url}}" alt="">
+            <h2>{{employee.fullname}}</h2>
+            <h1>{{employee.position}}</h1>
+            <p>{{employee.exp}}</p>
+            <p>{{employee.biography|safe}}</p>
+        </div>
+        <!-- col --> 
+    </div>
+</div>
+{% endblock content %}
