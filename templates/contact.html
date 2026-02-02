@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+    
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/contact.css' %}">
+<div class="container">
+  <main>
+    <div class="py-5 text-center">
+      <img class="d-block mx-auto mb-4" src="https://static.tildacdn.com/tild3161-3537-4535-b237-303465343066/__-03.svg" alt="" width="102">
+      <h2>{{contacts.title}}</h2> 
+    </div>
+
+    <div class="row g-5">
+      <div class="col-md-5 col-lg-4 order-md-last">
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+          <span class="text-primary">Инфо</span> 
+        </h4>
+        <ul class="list-group mb-3"> 
+          <li class="list-group-item d-flex justify-content-between lh-sm">
+            <div>
+              <h6 class="my-0"><a href="tel:{{contacts.phone_number1}}">{{contacts.phone_number1}}</a></h6> 
+            </div> 
+          </li> 
+          {% if contacts.phone_number2 %}
+          <li class="list-group-item d-flex justify-content-between lh-sm">
+            <div>
+              <h6 class="my-0"><a href="tel:{{contacts.phone_number1}}">{{contacts.phone_number2}}</a></h6> 
+            </div> 
+          </li> 
+          {% endif %}
+          {% if contacts.phone_number3 %}
+          <li class="list-group-item d-flex justify-content-between lh-sm">
+            <div>
+              <h6 class="my-0"><a href="tel:{{contacts.phone_number1}}">{{contacts.phone_number3}}</a></h6> 
+            </div> 
+          </li> 
+          {% endif %}
+          <li class="list-group-item d-flex justify-content-between lh-sm">
+            <div>
+              <h6 class="my-0"><a href="mailto:{{contacts.email}}">{{contacts.email}}</a></h6> 
+            </div> 
+          </li> 
+          <li class="list-group-item d-flex justify-content-between lh-sm">
+            <div>
+              <h6 class="my-0">{{contacts.time_to_work}}</h6> 
+            </div> 
+          </li>  
+          <li class="list-group-item d-flex justify-content-between lh-sm">
+            <div>
+              <h6 class="my-0"><a href="{{contacts.social_whatsapp}}">whatsapp</a></h6> 
+            </div> 
+          </li> 
+          <li class="list-group-item d-flex justify-content-between lh-sm">
+            <div>
+              <h6 class="my-0"><a href="{{contacts.social_telegram}}">telegram</a></h6> 
+            </div> 
+          </li> 
+          <li class="list-group-item d-flex justify-content-between lh-sm">
+            <div>
+              <h6 class="my-0"><a href="{{contacts.social_instagram}}">instagram</a></h6> 
+            </div> 
+          </li>   
+        </ul> 
+      </div>
+      <div class="col-md-7 col-lg-8">
+        <h4 class="mb-3">Оставить заявку на обучение</h4>
+        <form class="needs-validation" novalidate="">
+          <div class="row g-3">
+            <div class="col-sm-6">
+              <label for="firstName" class="form-label">ФИО</label>
+              <input type="text" class="form-control" id="firstName" placeholder="Арген Артыков" value="" required="">
+              <div class="invalid-feedback">
+                Valid first name is required.
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <label for="lastName" class="form-label">Номер телефона</label>
+              <input type="text" class="form-control" id="lastName" placeholder="0771494083" value="" required="">
+              <div class="invalid-feedback">
+                Valid last name is required.
+              </div>
+            </div> 
+
+            <div class="col-12">
+              <label for="email" class="form-label">Email <span class="text-body-secondary">(Optional)</span></label>
+              <input type="email" class="form-control" id="email" placeholder="you@example.com">
+              <div class="invalid-feedback">
+                Please enter a valid email address for shipping updates.
+              </div>
+            </div>    
+
+          <button class="w-100 btn btn-primary btn-lg" type="submit">Отправить</button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+    <div class="container">
+        {{contacts.map|safe}}
+    </div>
+
+  <footer class="my-5 pt-5 text-body-secondary text-center text-small">
+    <p class="mb-1">© 2023–2026 Инновационный колледж Айти и Бизнеса</p>
+    <ul class="list-inline">
+      <li class="list-inline-item"><a href="#">Privacy</a></li>
+      <li class="list-inline-item"><a href="#">Terms</a></li>
+      <li class="list-inline-item"><a href="#">Support</a></li>
+    </ul>
+  </footer>
+</div>
+
+{% endblock content %}
+    
