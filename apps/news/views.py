@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from apps.news.models import News, Category
 from django.db.models import Q
+from django.core.paginator import Paginator
 
 
 def search(request):
@@ -23,8 +24,13 @@ def search(request):
 def homepage(request):
     news_all = News.objects.all()
     category_all = Category.objects.filter(news__isnull=False).distinct()
+
+    paginator = Paginator(news_all, 3)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
     context = {
-        'news_all':news_all,
+        'page_obj':page_obj,
         'category_all':category_all,
     }
     return render(request, 'index.html', context)
