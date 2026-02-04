@@ -2,7 +2,8 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static 
-from apps.contact.views import contact
+from apps.contact.views import contact 
+from apps.valuta.views import valuta_page
 
 
 urlpatterns = [
@@ -11,4 +12,5 @@ urlpatterns = [
     path('', include('apps.news.urls')),
     path('about/', include('apps.about.urls')),
     path('contact/', contact, name='contact'),
+    path("valuta/", valuta_page, name="valuta"),
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
