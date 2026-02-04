@@ -43,3 +43,16 @@ class SocialLink(models.Model):
     class Meta:
         verbose_name_plural = 'Соцсети'
         verbose_name = 'соцсеть'
+
+
+class Images(models.Model):
+    employee = models.ForeignKey(Employee, models.CASCADE)
+    title = models.CharField(verbose_name="Название фото", max_length=20)
+    image = models.ImageField(verbose_name="Фото", upload_to='images/')
+
+    def __str__(self):
+        return self.title
+    
+    class Meta:
+        verbose_name_plural = 'Фото'
+        verbose_name = 'фото'

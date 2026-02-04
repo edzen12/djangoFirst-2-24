@@ -15,7 +15,7 @@ def about(request):
 
 def employee(request):
     category_all = Category.objects.filter(news__isnull=False).distinct()
-    employee = Employee.objects.prefetch_related('sociallink_set')
+    employee = Employee.objects.prefetch_related("sociallink_set", "images_set")
     context = { 
         'category_all':category_all,
         'employee':employee,
