@@ -15,7 +15,9 @@
                 </div>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                    <img src="{{employee.image.url}}" class="d-block w-100" alt="...">
+                        <div class="imgBlock" style="height: 575px;">
+                            <img style="height: 100%;object-fit: cover;" src="{{employee.image.url}}" class="d-block w-100" alt="...">
+                        </div>
                     </div>
                     {% for imgs in employee.images_set.all %}  
                     <div class="carousel-item">
@@ -32,6 +34,8 @@
                     <span class="visually-hidden">Следующий</span>
                 </button>
                 </div>
+                {% else %}
+                <img src="https://i.pinimg.com/564x/4f/9b/61/4f9b611e72d038a4e8176709de0913d4.jpg" alt="">
                 {% endif %} 
             <!--  --> 
             <h2>{{employee.fullname}}</h2>
